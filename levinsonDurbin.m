@@ -1,7 +1,7 @@
 function [ coeff, b0 ] = levinsonDurbin( data , p)
 
 
-rx = autocorr(data, p);
+rx = data; % autocorr coefficients
 a = zeros(p+1);
 e = zeros(1, p+1);
 G = zeros(1, p+1);

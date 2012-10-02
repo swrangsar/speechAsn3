@@ -1,0 +1,4 @@
+close all; clear all;
+
+autocorrCoeffs = getAutoCorrCoefficients(inputFile, poleOrder);
+LPCoeffs = levinsonDurbin(autocorrCoeffs

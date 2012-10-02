@@ -1,0 +1,7 @@
+close all; clear all;
+
+getLPCoefficients('a_pani', 6);
+getLPCoefficients('a_pani', 6);
+getLPCoefficients('a_pani', 6);
+getLPCoefficients('a_pani', 6);
+getLPCoefficients('a_pani', 6);
