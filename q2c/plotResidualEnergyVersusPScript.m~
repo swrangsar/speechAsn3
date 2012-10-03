@@ -1,0 +1,7 @@
+close all; clear all;
+
+poleOrders = [6 8 10 12 16];
+
+inputFiles = ['a_pani.wav', 'n_pani.wav', 'i_pani.wav', 's_uska.wav'];
+
+for 1

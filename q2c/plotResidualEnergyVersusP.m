@@ -1,0 +1,68 @@
+function plotResidualEnergyVersusP(inputFile, poleOrders)
+
+residualEnergies = zeros(length(poleOrders), 1);
+cols = 2;
+rows = ceil(length(poleOrders)/cols);
+figure;
+for k = 1:length(poleOrders)
+    residualEnergies(k) = getResidualEnergy(inputFile, poleOrders(k));
+    subplot(rows, cols, k); stem(poleOrders, residualEnergies);
+    title(['Residual energy vs p for ''', inputFile, ''''], 'interpreter', 'none');
+    xlabel('Order of ''p''');
+    ylabel('Residual energy');
+end
+end
+    
+
+
+%% get residual energy
+
+function residualEnergy = getResidualEnergy(inputFile, poleOrder)
+
+residualEnergy = 0;
+residualSignal = getResidualSignal(inputFile, poleOrder);
+residualSignal2 = residualSignal .^ 2;
+residualEnergy = residualEnergy + sum(residualSignal2(:));
+end
+
+
+%% get residual signal
+
+function residualSignal = getResidualSignal(inputFile, poleOrder)
+
+LPCoeffs = getLPCoefficients(inputFile, poleOrder);
+windowedSignal = getWindowedSignal(inputFile);
+siz = size(windowedSignal(:));
+M = siz(1);
+errorSignal = zeros(M, 1);
+
+for k = 1:M
+    errorSignal(k) = windowedSignal(k);
+    for j = 1:poleOrder
+        if k > j
+            errorSignal(k) = errorSignal(k) - LPCoeffs(j) * windowedSignal(k-j);
+        else
+            break;
+        end
+    end
+end
+residualSignal = errorSignal;
+
+
+end 
+
+
+%% get hamming windowed central part of a signal
+
+function windowedSignal = getWindowedSignal(inputFile)
+
+% inputFile = 'a_pani.wav';
+windowDuration = 0.030; % in ms
+[y, fs] = preEmphasize(inputFile);
+siz = size(y);
+length = siz(1);
+centralIndex = round(length/2);
+M = round(windowDuration * fs);
+startIndex = round(centralIndex - M/2);
+windowedSignal = y(startIndex:startIndex + M-1);
+end
