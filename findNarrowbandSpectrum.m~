@@ -1,5 +1,0 @@
-close all; clear all;
-
-printNarrowbandSpectrum('a_pani.wav');
-y = preEmphasize('a_pani.wav');
-wavwrite(y, fs, 'a_pani_pre
