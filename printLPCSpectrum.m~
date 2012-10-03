@@ -1,0 +1,3 @@
+close all; clear all;
+
+getHammingNarrowbandSpectrum('a_pani', poleOrder);

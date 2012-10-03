@@ -6,9 +6,9 @@ poleOrder1 = 6;
 poleOrder2 = 10;
 num = (1);
 
-LPCoeffs1 = getLPCoefficients(inputFile, poleOrder1);
+LPCoeffs1 = -getLPCoefficients(inputFile, poleOrder1);
 LPCoeffsFull1 = (cat(1, (1), LPCoeffs1(:)))'
-LPCoeffs2 = getLPCoefficients(inputFile, poleOrder2);
+LPCoeffs2 = -getLPCoefficients(inputFile, poleOrder2);
 LPCoeffsFull2 = (cat(1, (1), LPCoeffs2(:)))';
 
 figure(100); clf;
@@ -25,9 +25,9 @@ poleOrder1 = 6;
 poleOrder2 = 10;
 num = (1);
 
-LPCoeffs1 = getLPCoefficients(inputFile, poleOrder1);
+LPCoeffs1 = -getLPCoefficients(inputFile, poleOrder1);
 LPCoeffsFull1 = (cat(1, (1), LPCoeffs1(:)))'
-LPCoeffs2 = getLPCoefficients(inputFile, poleOrder2);
+LPCoeffs2 = -getLPCoefficients(inputFile, poleOrder2);
 LPCoeffsFull2 = (cat(1, (1), LPCoeffs2(:)))';
 
 figure(200); clf;
@@ -43,9 +43,9 @@ poleOrder1 = 6;
 poleOrder2 = 10;
 num = (1);
 
-LPCoeffs1 = getLPCoefficients(inputFile, poleOrder1);
+LPCoeffs1 = -getLPCoefficients(inputFile, poleOrder1);
 LPCoeffsFull1 = (cat(1, (1), LPCoeffs1(:)))'
-LPCoeffs2 = getLPCoefficients(inputFile, poleOrder2);
+LPCoeffs2 = -getLPCoefficients(inputFile, poleOrder2);
 LPCoeffsFull2 = (cat(1, (1), LPCoeffs2(:)))';
 
 figure(300); clf;
@@ -61,9 +61,9 @@ poleOrder1 = 6;
 poleOrder2 = 10;
 num = (1);
 
-LPCoeffs1 = getLPCoefficients(inputFile, poleOrder1);
+LPCoeffs1 = -getLPCoefficients(inputFile, poleOrder1);
 LPCoeffsFull1 = (cat(1, (1), LPCoeffs1(:)))'
-LPCoeffs2 = getLPCoefficients(inputFile, poleOrder2);
+LPCoeffs2 = -getLPCoefficients(inputFile, poleOrder2);
 LPCoeffsFull2 = (cat(1, (1), LPCoeffs2(:)))';
 
 figure(400); clf;
