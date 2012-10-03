@@ -1,9 +1,6 @@
-function getLPCoefficients(inputFile, poleOrder)
+function LPCoeffs = getLPCoefficients(inputFile, poleOrder)
 
 
 autocorrCoeffs = getAutoCorrCoefficients(inputFile, poleOrder);
-LPCoeffs = levinsonDurbin(autocorrCoeffs, poleOrder);
-figure, stem(LPCoeffs);
-title(['LP coefficients of ''', inputFile, ''' for p = ''', num2str(poleOrder), ''''], 'interpreter', 'none');
-
+LPCoeffs = levinsonDurbin(autocorrCoeffs);
 end

@@ -13,24 +13,26 @@ a(1, 1) = 1; e(1) = rx(1);
 for j = 0:p-1;
     G(j+1) = rx(j+2);
     sum = 0;
-    if j > 0
+    if j > 
         for i = 1:j;
-            sum = sum + (a(j+1, i+1)*rx(j+2-i));
+            sum = sum + (a(j, i)*rx(j+1-i));
         end
     end
-    G(j+1) = G(j+1) + sum;
-    reflected(j + 2) = -G(j+1)/e(j+1);
+    G(j) = G(j) + sum;
+    reflected(j+i) = -G(j)/e(j);
     
-    for i  = 1:j;
-            a(j+2, i+1) = a(j+1, i+1) + (reflected(j+2)*a(j+1, j-i+2));
+    for i  = 2:j;
+            a(j+1, i) = a(j, i) + (reflected(j+1)*a(j, j-i+1));
     end
     
-    a(j+2, j+2) = reflected(j+2);
-    e(j+2) = e(j + 1) * (1-(abs(reflected(j+2))^2));
+    a(j+1, j+1) = reflected(j+1);
+    e(j+1) = e(j) * (1-(abs(reflected(j+1))^2));
     
 end
 b0 = sqrt(e(p+1)); % the b(0) that we require in the numerator of the transfer function
-coeff = a(p+1, (2:end)); % coeff is the array of a(p) coefficients
+coeff = a(p+1, 2:end); % coeff is the array of a(p) coefficients
 coeff = -1 * coeff;
 
 end
+
+

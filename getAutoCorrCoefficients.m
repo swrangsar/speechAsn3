@@ -25,7 +25,7 @@ for p = 0:poleOrder
 end
 
 autocorrelationCoefficients = ACCoeff;
-figure, stem(ACCoeff);
-title(['Autocorrelation coefficients of ''', inputFile, ''' for p = ''', num2str(poleOrder), ''''], 'interpreter', 'none');
+% figure, stem(ACCoeff);
+% title(['Autocorrelation coefficients of ''', inputFile, ''' for p = ''', num2str(poleOrder), ''''], 'interpreter', 'none');
 
 end
