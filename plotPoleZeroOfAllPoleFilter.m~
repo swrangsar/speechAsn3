@@ -1,8 +1,14 @@
 close all; clear all;
 
-inputFile = 'a_pani.wav';
-poleOrder = 6;
+inputFile = 'n_pani.wav';
+poleOrder1 = 6;
+poleOrder2 = 10;
+num = (1);
 
-LPCoeffs = -getLPCoefficients(inputFile, poleOrder);
+LPCoeffs1 = getLPCoefficients(inputFile, poleOrder1);
+LPCoeffsFull1 = (cat(1, (1), LPCoeffs1(:)))'
+LPCoeffs2 = getLPCoefficients(inputFile, poleOrder2);
+LPCoeffsFull2 = (cat(1, (1), LPCoeffs2(:)))';
 
-LPCoeffsFull = cat(1, [1], LPCoeffs(:))
+subplot(2, 1,zplane(num, LPCoeffsFull1);
+title(['Pole-zero plot for all pole filter of order = ''', num2str(poleOrder1), ''' in ''', inputFile, ''''], 'interpreter', 'none');
