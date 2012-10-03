@@ -1,4 +1,4 @@
-function [ coeff, b0 ] = levinsonDurbin(autocorrCoeffs)
+function [coeff, b0] = levinsonDurbin(autocorrCoeffs)
 
 siz = size(autocorrCoeffs(:));
 poleOrder = siz(1) - 1;

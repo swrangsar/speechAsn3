@@ -1,4 +1,4 @@
-function [LPCCoeffs, gain] = estimateSpeechParameters(inputFile)
+function [LPCCoeffs] = estimateSpeechParameters(inputFile)
 
 poleOrder = 10;
 [residualSignal, fs] = getResidualSignal(inputFile, poleOrder);
@@ -6,10 +6,10 @@ magnitudeSpectrum = abs(fft(residualSignal));
 
 figure; plot(magnitudeSpectrum); axis tight;
 
-
-
 LPCCoeffs = getLPCCoefficients(inputFile, poleOrder);
-gain = getGain(inputFile, poleOrder);
+
+
+
 
 end
 
@@ -59,7 +59,7 @@ for p = 0:poleOrder
     for k = 0:M-1
         valueToBeAdded = 0;
         if k-p >= 0
-            valueToBeAdded = fullSignal(k+1) .* fullSignal(k+1-p);
+            valueToBeAdded = windowedSignal(k+1) .* windowedSignal(k+1-p);
         end
         ACCoeff(p+1) = ACCoeff(p+1) + valueToBeAdded;
     end
@@ -83,12 +83,9 @@ end
 function gain = getGain(inputFile, poleOrder)
 
 ACCoeffs = getAutoCorrelationCoefficients(inputFile, poleOrder);
-LPCCoeffs = getLPCCoefficients(inputFile, poleOrder);
-
 predictionError = ACCoeffs(1);
+
 for k = 1:poleOrder
-    predictionError = predictionError - (LPCCoeffs(k) * ACCoeffs(k+1));
-end
-gain = sqrt(predictionError);
+    predictionError = predictionError - (ACCoeffs
 
 end
