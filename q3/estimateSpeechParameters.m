@@ -8,10 +8,10 @@ magnitudeSpectrum = abs(fft(residualSignal, N));
 w = 0:length(magnitudeSpectrum)-1;
 w = w .* 2 * pi * (1/length(magnitudeSpectrum));
 
-figure; plot(w, magnitudeSpectrum); axis tight;
-title(['Magnitude spectrum of residual signal for ''', inputFile, ...
-    ''''], 'interpreter', 'none');
-xlabel('''w'' in radians');
+% figure; plot(w, magnitudeSpectrum); axis tight;
+% title(['Magnitude spectrum of residual signal for ''', inputFile, ...
+%     ''''], 'interpreter', 'none');
+% xlabel('''w'' in radians');
 
 pitch = getPitch(inputFile, fs);
 LPCCoeffs = getLPCCoefficients(inputFile, poleOrder);
